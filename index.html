@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shwas India</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        @media (max-width: 576px) {
+            .bg-login-image {
+                background: url(../images/logo_bg.png) no-repeat;
+                background-position: center;
+                background-size: 40%;
+                height: 150px;
+                margin-top:6px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 820px) {
+            .bg-login-image {
+                background: url(../images/logo_bg.png) no-repeat;
+                background-position: center;
+                background-size: 30%;
+                height: 150px;
+                margin-top: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5" style="padding: 1rem 3rem !important;">
+								<div id="loginform">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Log In</h1>
+                                    </div>
+                                    <form class="user" id="login-form">
+                                        <div class="form-group">
+                                            <input type="number" id="empcode" name="empid" class="form-control form-control-user" placeholder="User ID" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" id="pass" name="pass" class="form-control form-control-user"  placeholder="Password" required>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Go
+                                        </button>
+                                        <hr>
+                                        <div id="formalert"></div>
+                                    </form>
+                                    </div>
+									
+									<div id="selectcamp" style="display:none">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Select Camp:</h1>
+										<button data-camp="fibroscan" class="btn btn-info btn-camp  btn-block">Fibroscan Camp</button>
+										<button data-camp="diabetes" class="btn btn-info btn-camp  btn-block" id="dccamp">DC Campaign</button>
+										<button data-camp="diabetesdetection" class="btn btn-info btn-camp  btn-block">Diabetes Detection Camp</button>
+										<button data-camp="dreamcatcher_contest" class="btn btn-info btn-camp  btn-block">DC Contest</button>
+										<hr class="sidebar-divider">
+										<button  class="btn btn-warning logout_btn btn-block">Log Out</button>
+										
+                                    </div>
+                                    
+                                    </div>
+									
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+
+
+        
+
+
+
+
+
+        // on submit
+        var edata = [];
+        $("#login-form").on("submit", function (event) {
+            event.preventDefault();
+
+        
+
+            //var fields = {};
+            //$("#login-form").find(":input").each(function () {
+            //    fields[thib.name] = $(this).val();
+
+            //});
+            var emp_code = $("#empcode").val(); 
+            var password = $("#pass").val(); 
+            
+            var obj = {
+                "emp_code": emp_code, "password": password
+            }
+            console.log(obj)
+
+            $.ajax({
+                type: 'POST',
+                url: "camp/data/AllWebMethods.aspx/Userlogin",
+                data: JSON.stringify(obj),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (resultData) {
+                    //alert(resultData.d);
+                    if (resultData.d == 1) {
+                        window.location.href = "camp/planner.html";
+                    }
+                    else if (resultData.d == 0) {
+                        $("#formalert").html("<div class='alert alert-warning'><strong>Warning!</strong> Invalid Credentials!</div>")
+                        $(".alert-warning").fadeTo(3000, 500).slideUp(500, function () {
+                            $(".alert-warning").slideUp(500);
+                        }); 
+                    }
+                    
+                    else {
+                        $("#formalert").html("<div class='alert alert-warning'><strong>Warning!</strong>Something went wrong!</div>")
+                        $(".alert-warning").fadeTo(3000, 500).slideUp(500, function () {
+                            $(".alert-warning").slideUp(500);
+                        });
+                    }
+                   
+
+                }
+            });
+
+        });
+
+
+        
+
+    </script>
+
+</body>
+
+</html>

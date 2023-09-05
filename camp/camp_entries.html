@@ -1,0 +1,1237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shwas India</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css"
+          rel="stylesheet"
+          type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"
+          rel="stylesheet" />
+    <link href="css/sb-admin-2.min.css" />
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css"
+          rel="stylesheet" />
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css"
+          rel="stylesheet" />
+    <!-- Date picker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
+          rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <style>
+        #crowd_img{
+            display: none;
+        }
+        #crowdimgModal .modal-body{
+            height: 80vh;
+            overflow-y: scroll;
+        }
+        #nodata {
+            display: none;
+            text-align: center;
+            background: #f6f7fa;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .buttons-excel {
+            background: #257d07 !important;
+            color: #fff !important;
+            border: none !important;
+        }
+
+            .buttons-excel:hover {
+                background: #257d07b5 !important;
+            }
+       </style>
+</head>
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+               href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">Shwas</div>
+                <div class="sidebar-brand-text mx-3">India</div>
+            </a>
+            <hr class="sidebar-divider my-0" />
+            <li class="nav-item">
+                <a class="nav-link" href="planner.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Planner</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider" />
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item ">
+                <a class="nav-link"
+                   href="#"
+                   data-toggle="collapse"
+                   data-target="#collapsePages"
+                   aria-expanded="false"
+                   aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Planner List</span>
+                </a>
+                <div id="collapsePages"
+                     class="collapse "
+                     aria-labelledby="headingPages"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="planner_approved.html">Planlist Approved</a>
+                        <a class="collapse-item" href="planner_approval_pending.html">Planlist Approval Pending</a>
+                        <a class="collapse-item" href="planner_cancelled.html">Planlist Cancelled</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider" />
+            <li class="nav-item">
+                <a class="nav-link" href="leave.html">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>
+                        Leave
+                    </span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block" />
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <h3>Camps/Clinic Entries</h3>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop"
+                            class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="searchDropdown"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control bg-light border-0 small"
+                                               placeholder="Search for..."
+                                               aria-label="Search"
+                                               aria-describedby="basic-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="userDropdown"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="username">User</span>
+                                <img class="img-profile rounded-circle"
+                                     src="img/undraw_profile.svg" />
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item"
+                                   href="Logout.aspx"
+                                   data-toggle="modal"
+                                   data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="text-right">
+                    </div>
+                    <div class="card shadow mb-4">
+                        <!-- Button trigger modal -->
+                        <div class="card-body">
+                            <!-- Page Heading -->
+                            <div class="row">
+                                <div class="col-md-9"></div>
+                                <!--<div class="col-md-3  date">
+                                    <label class="date_text"> Select month and year: </label>
+                                    <i id="date_icon" class="fa-solid fa-calendar-days"></i>
+                                    <input type="text"
+                                           id="datepicker_month"
+                                           class="form-control"
+                                           placeholder="Select Months" />
+                                </div>-->
+                           </div>
+                                <h3>Camp/Clinic Details:</h3>
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <p>Shift: <span id="shift">Morning</span></p>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <p>Engagement: <span id="engagement">Camp</span></p>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <p>Dr Name: <span id="drname">Rupali Naidu</span></p>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <p>Date: <span id="date">30/05/2023</span></p>
+                                    </div>
+                                    <div class="text-right col-md-12">
+                                        <button type="button" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#leavemodal">
+                                            Add Patient
+                                        </button>
+                                        <button type="button" id="crowd_img" class="btn btn-secondary col-md-2" data-toggle="modal" data-target="#crowdModal">
+                                            Add Crowd Image
+                                        </button>
+                                        <a id="view_img" class="btn btn-secondary col-md-2" data-toggle="modal" data-target="#crowdimgModal">
+                                            View Crowd Image
+                                        </a>
+                                    </div>
+                                    <hr style="width:100%;text-align:left;margin-left:0">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="planlist" class="table table-hover table-bordered" style="width:98%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="rt-name">RT Name</th>
+                                                        <th class="rt-mgr">Reporting Manager</th>
+                                                        <th class="rt-zone">Zone</th>
+                                                        <th class="pl-shif">Shift</th>
+                                                        <th class="pl-eng">Engagement</th>
+                                                        <th class="dr-name">Dr name</th>
+                                                        <th class="pl-date">Planner Date</th>
+
+                                                        <th>Patient name</th>
+                                                        <th>Mobile number</th>
+                                                        <th>Sex</th>
+                                                        <th>Age</th>
+                                                        <th>Service Provided</th>
+                                                        <th>Other Brand</th>
+                                                        <th>Our Brand</th>
+                                                        <th>Rx Value</th>
+                                                        <th>Actual Sale</th>
+                                                        <th>View Rx</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                            <div id="nodata">No Data Availalbe. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="formalerts"></div>
+                            </div>
+                            <!-- /.container-fluid -->
+                        </div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Crowd Photo upload Modal-->
+    <div class="modal fade" id="crowdModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crowd Photo Upload</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="add_crowdimg">
+                        <div class="form-group col-md-12">
+                            <label>Crowd Photo</label>
+                            <input type="file"
+                                   class="form-control" id="f_end_time" placeholder="Select Photo" name="" aria-describedby="" multiple required>
+
+
+
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" />
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary logout_btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Add Patients Image Modal-->
+    <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="rximg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Crowd Image Modal-->
+    <div class="modal fade" id="crowdimgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="crowd-img"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="leavemodal" role="dialog" aria-labelledby="leavemodal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form id="add-patients-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Patients Information:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="padding: 1rem 2rem;">
+                        <div class="row">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Patient name</label>
+                                    <input type="text"
+                                           class="form-control" id="pt_name" placeholder="" name="ptname" aria-describedby="" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Mobile number</label>
+                                    <input type="number"
+                                           class="form-control" id="pt_no" placeholder="" name="ptno" aria-describedby="" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Sex</label>
+                                    <select class="form-control"
+                                            name="drgender"
+                                            id="pt_sex"
+                                            required>
+                                        <option value="">Sex</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Age</label>
+                                    <input type="number"
+                                           class="form-control" id="pt_age" placeholder="" name="ptage" aria-describedby="" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Prescription Photo</label>
+                                    <input type="file"
+                                           class="form-control" id="pt_pres" placeholder="Select Photo" name="ptpres" multiple aria-describedby="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Prescription of other brand</label>
+                                    <input type="text"
+                                           class="form-control" id="pt_otpres" placeholder="" name="ptotpres" aria-describedby="" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="sel1">Service Provided</label>
+                                    <select class="form-control js-example-basic-multiple"
+                                            id="service_provided" name="service_provided[]" multiple placeholder="Service Provided" style="width:100%"
+                                            required>
+                                        <option value="">Service Provided</option>
+                                        <option value="Device demonstration">Device demonstration</option>
+                                        <option value="Pulse oximeter">Pulse oximeter</option>
+                                        <option value="Spirometry">Spirometry</option>
+                                        <option value="BP monitoring">BP monitoring</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                    <textarea class="form-control" type="text" placeholder="Add Comments" style="display:none; margin-top: 10px" id="other_service"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">Prescription of Our brand</div>
+                                <div class="row" style="margin:0; width: 100%;">
+                                    <div class="row col-md-12 inpuWrap">
+                                        <div class="form-group col-md-6" style="padding-right: 0px;">
+                                            <select class="form-control geln_pres"
+                                                    name="glenpres"
+                                                    id="glen_pres"
+                                                    required>
+                                                <option value="">Select Prescription</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4" style="padding-right: 26px; padding-left: 18px;">
+                                            <input type="number"
+                                                   class="form-control" id="quantity" placeholder="Quantity" name="quantity" aria-describedby="" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-plus-circle add_button" id="addButton" style="margin-top: 10px; cursor:pointer"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div style="display:none;">
+                                    <!--<div id="clone" class="row" style="margin:0; width: 100%;">
+                                   <div class="form-group col-md-6" style="padding-right: 0px;">
+                                       <select
+                                    class="form-control"
+
+                                    id="glen_pres"
+                                     required
+                                    >
+                                    <option value="">Select Glenmark brand</option>
+                                    <option>nebzmart GF Combipack Sale IN</option>
+                                   <option>AIRZ-FF CAPSULES DPI 30'S SALE IN</option>
+                                   <option>Fiboresp Forte Tablet 10's Sale IN</option>
+                                   <option>NINDANIB 100Mg Soft G Caps 10's Sale IN</option>
+                                   <option>NINDANIB 150Mg Soft G Caps 10's Sale IN</option>
+                                   <option>Airz F Digihaler 120 MDI Sales</option>
+                                   <option>Nindanib 150 mg 10's Sale</option>
+                                   <option>Nindanib 100 mg 10's Sale</option>
+                                   <option>Glenmark Airz-25F Capsule 30's Sale IN</option>
+                                   <option>Vilor-F 15's Sales IN</option>
+                                   <option>Mucaryl-AB Tablet 10's Sale IN</option>
+                                   <option>Indamet 160 DPI 15's Sale</option>
+                                   <option>Mucaryl Effervescent tab 600mg 10's Tube</option>
+                                   <option>INDAMET 80 DPI  15's ( S)</option>
+                                   <option>INDAMET 320 DPI 15's ( S)</option>
+                                   <option>Vilor-F 25/200 mcg DPI 15's Sales IN</option>
+                                   <option>Airz-FB DPI 30's IF</option>
+                                   <option>Glenmark Airz -FB  MDI Sale</option>
+                                   <option>Nebzmart-G  8 x 2 ml</option>
+                                   <option>INDAMET G CAPSULE 15'S SALE IN</option>
+
+
+                                    </select>
+                                     </div>
+
+                                     <div class="form-group col-md-4" style="padding-right: 26px; padding-left: 18px;">
+                                     <input type="number"
+                                     class="form-control" id="quantity" placeholder="Quantity" name="quantity" aria-describedby=""  required >
+                                   </div>
+
+                                    <div class="col-md-2">
+                                     <i class="fa  fa-window-close closeButton" style="margin-top: 10px; cursor:pointer"></i>
+                                   </div>
+                                   </div>-->
+                                </div>
+                                <div class="row" id="addrow" style="margin:0; width: 100%;"></div>
+                            </div>
+                            <input type="hidden" name="created_by" id="created_by">
+                            <input type="hidden" name="created_by" id="created_by_mod">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="mod-form">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Page level plugins -->
+        <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+        <!--<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <!-- Bootbox for alerts and confirmations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="js/common.js"></script>
+        <style>
+            .select2-container .select2-selection--single {
+                box-sizing: border-box;
+                cursor: pointer;
+                display: block;
+                height: 37px;
+                user-select: none;
+                -webkit-user-select: none;
+            }
+
+            .select2-container {
+                width: 100% !important;
+            }
+        </style>
+        <script>
+            var planner_dt;
+            localStorage.getItem("drName");
+            localStorage.getItem("shift");
+            var engget = localStorage.getItem("eng");
+            localStorage.getItem("date");
+            $("#shift").text(localStorage.getItem("shift"));
+            $("#drname").text(localStorage.getItem("drName"));
+            $("#engagement").text(localStorage.getItem("eng"));
+            $("#date").text(localStorage.getItem("date"));
+
+            if (engget === "Camp") {
+                $("#crowd_img").show();
+                $("#view_img").show();
+            }
+            else {
+                $("#crowd_img").hide();
+                $("#view_img").hide();
+            }
+
+
+            //   $("#addButton").click(function(){
+            ////alert(1)
+            //       $('#addrow').append('');
+            //	 $("#clone").clone().appendTo("#addrow");
+            //   });
+
+            $(document).on('click', '.closeButton', function () {
+
+
+                $("#addrow #clone:last-child").remove();
+            })
+
+
+            $(document).ready(function () {
+
+                checklogin();
+                $("#username").text(getCookies().emp_name);
+
+                $("#datepicker_month")
+                    .datepicker({
+                        format: "yyyy-mm",
+                        viewMode: "years",
+                        minViewMode: "months",
+                        autoclose: true,
+                    })
+                    .on("changeDate", function (e) {
+                        var date1 = e.format();
+                        var date2 = formatDate(date1);
+                         //$('#planlist').DataTable().column(6).search(date2).draw();
+                    });
+                function formatDate(date) {
+                    var d = new Date(date),
+                        month = "" + (d.getMonth() + 1),
+                        day = "" + d.getDate(),
+                        year = d.getFullYear();
+
+                    if (month.length < 2) month = "0" + month;
+                    if (day.length < 2) day = "0" + day;
+                    var current_month = [year, month].join("-");
+                    /* alert([year, month].join("-"));*/
+
+                    return [year, month].join('-');
+                }
+
+                $("#datepicker_month").change(function () {
+                    $('#planlist').DataTable().column(6).search(date2).draw();
+                });
+
+
+                $('.js-example-basic-multiple').select2();
+                $("#created_by").val(emp_no);
+                $("#created_by_mod").val(emp_no);
+                $("#spoc_name").val(name);
+
+            });
+
+            $("#sel_doc").on("change", function () {
+                $("#region").val($("#sel_doc :selected").data("region"));
+                $("#city_name").val($("#sel_doc :selected").data("city"));
+                $("#clinic").val($("#sel_doc :selected").data("clinic"));
+            });
+
+
+            $("#service_provided").on("change", function () {
+                if ($("#service_provided").val() == "others") {
+                    $("#other_service").show();
+                }
+                else {
+                    $("#other_service").hide();
+                }
+            })
+           
+
+
+
+            /*
+            $('#f_machine_number').select2({
+             placeholder: 'Enter machine number',
+            })
+            $('#hqname').select2({
+             placeholder: 'Enter Hq name',
+            })
+            */
+
+
+            // on submit
+
+            $("#mod-leave-form").on("submit", function (event) {
+                event.preventDefault();
+                bootbox.alert({
+                    message: 'Your plan has been added! ',
+                    callback: function () {
+                        $("#mod-leave-form").trigger("reset");
+                        $("#leavemodal").modal("hide");
+                    }
+                });
+
+                var fields = {};
+                $("#mod-leave-form").find(":input").each(function () {
+                    fields[this.name] = $(this).val();
+
+                });
+                var obj = fields;
+                console.log(obj);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "data/all_webmethods.aspx/insert_leaveplan",
+                    data: JSON.stringify(obj),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (resultData) {
+                        if (resultData.d == "1") {
+
+                            bootbox.alert({
+                                message: 'Your plan has been added for : ' + $("#sel_doc").val(),
+                                callback: function () {
+                                    $("#mod-leave-form").trigger("reset");
+                                    $("#leavemodal").modal("hide");
+                                }
+                            });
+
+
+                        } else {
+
+                            bootbox.alert({
+                                message: 'Something went wrong! Please try again.',
+                                callback: function () { }
+                            });
+
+                        }
+
+                    }
+                });
+
+
+            });
+
+
+
+
+            $("#userform").on("submit", function (event) {
+                event.preventDefault();
+
+                bootbox.alert({
+                    message: 'Your plan has been added for : ' + $("#f_machine_number").val(),
+                    callback: function () {
+                        $("#userform").trigger("reset");
+                        $("#hqname").html("");
+                        $("#created_by").val(emp_no);
+                        $("#spoc_name").val(name);
+                    }
+                });
+
+
+                var fields = {};
+                $("#userform").find(":input").each(function () {
+                    fields[this.name] = $(this).val();
+
+                });
+                var obj = fields;
+                console.log(obj)
+
+                $.ajax({
+                    type: 'POST',
+                    url: "data/all_webmethods.aspx/insert_tourplan",
+                    data: JSON.stringify(obj),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (resultData) {
+                        if (resultData.d == "1") {
+
+                            bootbox.alert({
+                                message: 'Your plan has been added for : ' + $("#f_machine_number").val(),
+                                callback: function () {
+                                    $("#userform").trigger("reset");
+                                    $("#hqname").html("");
+                                    $("#created_by").val(emp_no);
+                                    $("#spoc_name").val(name);
+                                }
+                            });
+
+
+                        } else {
+
+                            bootbox.alert({
+                                message: 'Something went wrong! Please try again.',
+                                callback: function () { }
+                            });
+
+                        }
+
+                    }
+                });
+
+
+            });
+
+
+
+
+            $("#f_dr_uid").change(function () {
+
+                var drid = $(this).val();
+
+                var obj = { "drid": drid };
+                console.log(obj)
+
+                $.ajax({
+                    type: 'POST',
+                    url: "data/all_webmethods.aspx/checkdr",
+                    data: JSON.stringify(obj),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (resultData) {
+                        if (resultData.d != "0") {
+                            $("#f_dr_name").val(resultData.d);
+                        }
+                        else {
+
+                            alert("Please enter valid Doctor UID");
+                            $("#f_dr_uid").val("");
+                            $("#f_dr_uid").focus();
+
+                        }
+
+                    }
+                });
+            });
+
+
+
+
+
+            var ndate;
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            function getday(date) {
+                ndate = new Date(date);
+                var day = days[ndate.getDay()];
+                var month = months[ndate.getMonth()];
+                var year = ndate.getFullYear();
+                console.log(month)
+                $("#day").val(day);
+                $("#month").val(month);
+                $("#year").val(year);
+            }
+
+            function getdaymod(date) {
+                var ndate = new Date(date);
+                var day = days[ndate.getDay()];
+                var month = months[ndate.getMonth()];
+                var year = ndate.getFullYear();
+                console.log(month)
+                $("#day1").val(day);
+                $("#month1").val(month);
+                $("#year1").val(year);
+            }
+
+
+            var max_fields = 25;
+            var wrapper = $(".inpuWrap");
+            var add_button = $(".add_button");
+            var obj1 = {}
+            bindselectpost('https://ams.24fd.com/UserManage/Get_medicine_list_select2', 'glen_pres', obj1);
+
+            var form_id1 = 1;
+            $(add_button).click(function () {
+                form_id1 += 1;
+                bindselectpost('https://ams.24fd.com/UserManage/Get_medicine_list_select2', 'glen_pres' + form_id1 + '', obj1);
+            });
+
+            $(add_button).click(function (e) {
+                e.preventDefault();
+                /* alert(1);*/
+                var total_fields = wrapper[0].childNodes.length;
+                if (total_fields < max_fields) {
+                    $(wrapper).append('<div class="inpuWrap col-md-12 row m-0 p-0"><div class="form-group geln_pres  col-md-6 pr-0 mb-0"><select class="form-control" name="glenpres" id="glen_pres' + form_id1 + '" required=""><option value="">Select Prescription</option></select></div><div class="form-group col-md-4" style="padding-right: 26px; padding-left: 18px;"><input type="number" class="form-control" id="quantity' + form_id1 + '" placeholder="Quantity" name="quantity" aria-describedby=""  required></div><div class="col-md-2 removerow"><i class="fa fa-window-close mt-3" aria-hidden="true"></i></div></div>');
+                }
+            });
+
+            $(document).on('click', '.fa-window-close', function (e) {
+                e.preventDefault();
+
+                $(this).closest('.inpuWrap').remove();
+            });
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var pid = urlParams.get('pid');
+
+
+            $("#add-patients-form").on("submit", function (event) {
+                event.preventDefault();
+                var qauntity = '';
+                var qauntityarr = [];
+                $('.inpuWrap input[type =number]').each(function (index) {
+                    qauntityarr.push($(this).val());
+                });
+
+
+             
+                var midarr = [];
+                $('.inpuWrap select').each(function (index) {
+                    midarr.push($(this).val());
+                });
+
+                var str = "";
+                for (var i = 0, len = qauntityarr.length; i < len; i++) {
+
+                    if (i == 0) {
+                        str = midarr[i] + ":" + qauntityarr[i];
+                    }
+                    else {
+                        str += "," + midarr[i] + ":" + qauntityarr[i];
+                    }
+
+                }
+
+                var midarrtext = [];
+                $('.inpuWrap select').each(function (index) {
+                   // alert($(this).text())
+                    midarrtext.push($(this).find("option:selected").text());
+                });
+
+                var str1 = "";
+               var med_price_array = [];
+                for (var i = 0, len = qauntityarr.length; i < len; i++) {
+                    var myArray = midarrtext[i].split(":");
+                    med_price_array.push(myArray[1] * qauntityarr[i]);
+                }
+
+
+                var sum = 0;
+                for (var i = 0, len = med_price_array.length; i < len; i++) {
+                    sum += parseFloat(med_price_array[i])
+                    
+                }
+                alert("Actual Sale Value =" + "" + sum.toFixed(2));
+
+                var ajaxData = new FormData();
+
+                $.each($("input[type=file]"), function (i, obj) {
+                    $.each(obj.files, function (j, Files) {
+                        ajaxData.append('Files', Files);
+                    })
+                });
+                ajaxData.append("pt_name", $("#pt_name").val());
+                ajaxData.append("pt_mobile", $("#pt_no").val());
+                ajaxData.append("pt_sex", $("#pt_sex").val());
+                ajaxData.append("pt_age", $("#pt_age").val());
+                ajaxData.append("Rx_OtherBrand", $("#pt_otpres").val());
+                ajaxData.append("Service_Provided", $("#service_provided").val());
+                ajaxData.append("med_quantity", str);
+                ajaxData.append("emp_code", getCookies().empcode);
+                ajaxData.append("planner_id", pid);
+
+
+                console.log(ajaxData);
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "https://ams.24fd.com/UserManage/AddPatient",
+                    "method": "POST",
+                    "timeout": 0,
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": ajaxData,
+                    success: function (resultData) {
+
+                        var stat = JSON.parse(resultData);
+                        if (stat.message == "1") {
+                            var obj2 = {
+                                "emp_code": getCookies().empcode,
+                                "planner_id": pid
+                            };
+                            bootbox.alert({
+                                message: 'Patient has been added succesfully',
+                                callback: function () {
+                                    $("#add-patients-form").trigger("reset");
+                                    $("#leavemodal").modal('hide');
+
+                                }
+                            });
+                            location.reload();
+                            $.ajax({
+                                type: 'POST',
+                                url: 'https://ams.24fd.com/UserManage/get_patient_list',
+                                dataType: "json",
+                                contentType: 'application/json;charset=utf-8 ',
+                                data: JSON.stringify(obj2),
+                                async: false,
+                                processData: false,
+                                success: function (data) {
+                                    var item = data.dataObject;
+                                    planner_dt.clear().draw();
+                                    planner_dt.rows.add(item);
+                                    planner_dt.columns.adjust().draw();
+                                    console.log(item);
+                                }
+                            });
+
+                        } else {
+
+                            bootbox.alert({
+                                message: 'Something went wrong! Please try again.',
+                                callback: function () { }
+                            });
+
+                        }
+
+                    }
+                });
+
+            })
+
+
+            var obj = {
+                "emp_code": getCookies().empcode,
+                "planner_id": pid
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "https://ams.24fd.com/UserManage/get_patient_list",
+                data: JSON.stringify(obj),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (resultData) {
+                    myjson = resultData.dataObject;
+                    if (resultData.code == "200") {
+                        console.log(myjson);
+                        plannerlist(myjson);
+                        $("#nodata").hide();
+                    }
+                    else if (resultData.code == "409") {
+                        $("#nodata").show();
+                    }
+
+                    else {
+
+                        bootbox.alert({
+                            message: 'Something went wrong! Please try again.',
+                            callback: function () { }
+                        });
+
+                    }
+
+                }
+            });
+
+
+            function formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                return [month, day, year].join('/');
+            }
+
+
+            function plannerlist(data) {
+                var desg = getCookies().desg;
+                
+                planner_dt = $('#planlist').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            title: 'PatientEntries',
+                            text: 'Export to excel'
+                            //Columns to export
+                            //exportOptions: {
+                            //     columns: [0, 1, 2, 3,4,5,6]
+                            // }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            title: 'PDF',
+                            text: 'Export to PDF'
+                            //Columns to export
+                            //exportOptions: {
+                            //     columns: [0, 1, 2, 3, 4, 5, 6]
+                            //  }
+                        }
+                    ],
+              
+                    "data": data, // this passes your data to DataTables
+                    "columns": [
+                        { "data": "emp_name" },
+                        { "data": "reportingTo" },
+                        { "data": "emp_zone" },
+                        { "data": "planner_shift" },
+                        { "data": "planner_engagement" },
+                        { "data": "dr_name" },
+                        { "data": "planner_date" },
+
+                        { "data": "pt_name" },
+                        { "data": "pt_mobile" },
+                        { "data": "pt_sex" },
+                        { "data": "pt_age" },
+                        { "data": "service_Provided" },
+                        { "data": "rx_OtherBrand" },
+                        { "data": "med_quantity" },
+                        { "data": "rx_price" },
+                        { "data": "actual_sale" },
+                        {
+                            "data": "rx_Img",
+                            "mRender": function (data, type, row) {
+                                if (row.rx_Img != '') {
+                                    return '<div class="Addbtn" data-id="1" style="width:95px; font-size:11px;" ><i class="fa fa-eye" aria-hidden="true"></i></div>'
+                                }
+                                else {
+                                    return '<div class="Addbtn" data-id="1" style="width:95px; font-size:11px;" >NA</div>'
+                                }
+
+
+                            }
+                        },
+                    ],
+                    "columnDefs": [
+
+                    ]
+
+
+
+                });
+
+               
+                if (desg == 'RT') {
+                   
+                    planner_dt.column('.rt-name').visible(false);
+                    planner_dt.column('.rt-mgr').visible(false);
+                    planner_dt.column('.rt-zone').visible(false);
+                    planner_dt.column('.pl-shif').visible(false);
+                    planner_dt.column('.pl-eng').visible(false);
+                    planner_dt.column('.dr-name').visible(false);
+                    planner_dt.column('.pl-date').visible(false);
+                }
+
+
+                $("#planlist tbody").on("click", ".fa-eye", function () {
+                    var obj1 = planner_dt.row($(this).parents('tr')).data();
+                    $("#imgModal").modal("show");
+                    var rximg = obj1.rx_Img;
+                    var rxres = rximg.split(',');
+                    console.log(rxres);
+                    console.log(rximg);
+                    var path = 'https://ams.24fd.com/Images/'
+                    var docwrap = "";
+                    for (var i = 0; i < rxres.length; i++) {
+                        var item = rxres;
+                        docwrap = docwrap + '<div class="col-md-12" style="margin-bottom:50px;">';
+                        docwrap = docwrap + ' <div class="rximg_gal">';
+                        docwrap = docwrap + '<img style="width:80%;" src="' + path + '' + item[i] + '">';
+                        docwrap = docwrap + '</div>';
+                        docwrap = docwrap + '</div>';
+                        console.log(item);
+
+                    }
+
+                    $('#rximg').html(docwrap);
+                });
+
+
+            }
+
+
+
+            function imggallery(response) {
+                var data = response;
+                var img;
+                var docwrap = "";
+                var path = 'https://ams.24fd.com/Images/'
+                for (var i = 0; i < data.length; i++) {
+                    docwrap = docwrap + '<div class="col-md-12" style="margin-bottom:50px;">';
+                    docwrap = docwrap + ' <div class="rximg_gal">';
+                    docwrap = docwrap + '<img style="width:100%;" src="' + path + '' + data[i] + '">';
+                    docwrap = docwrap + '</div>';
+                    docwrap = docwrap + '</div>';
+
+                }
+                $('#crowd-img').html(docwrap);
+            }
+
+            $("#add_crowdimg").on("submit", function (event) {
+                event.preventDefault();
+                var ajaxData = new FormData();
+                ajaxData.append('action', 'uploadImages');
+                $.each($("input[type=file]"), function (i, obj) {
+                    $.each(obj.files, function (j, Files) {
+                        ajaxData.append('Files', Files);
+                    })
+                });
+                ajaxData.append("emp_code", getCookies().empcode);
+                ajaxData.append("planner_id", pid);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "https://ams.24fd.com/UserManage/AddMultiple_CrowdImage",
+                    "method": "POST",
+                    "timeout": 0,
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": ajaxData,
+                    success: function (resultData) {
+                        console.log(resultData[0]);
+                        console.log(resultData.message);
+                        var msg = 200;
+                        if (msg == "200") {
+
+                            bootbox.alert({
+                                message: 'Photo uploaded successfully',
+                                callback: function () {
+                                    $("#add_crowdimg").trigger("reset");
+                                    $("#crowdModal").modal('hide');
+
+                                }
+                            });
+                            location.reload();
+
+                        } else {
+
+                            bootbox.alert({
+                                message: 'Something went wrong! Please try again.',
+                                callback: function () { }
+                            });
+
+                        }
+
+                    }
+                });
+
+            })
+
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var pid = urlParams.get('pid');
+            var obj = {
+                "pid": pid
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "https://ams.24fd.com/UserManage/Get_planner_details",
+                data: JSON.stringify(obj),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (resultData) {
+                    var rximg = resultData.dataObject[0].crowd_image;
+                    var rxres = rximg.split(',');
+                    imggallery(rxres)
+                }
+            });
+
+
+        </script>
+</body>
+</html>

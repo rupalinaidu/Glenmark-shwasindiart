@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shwas India</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css"
+          rel="stylesheet"
+          type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"
+          rel="stylesheet" />
+    <link href="css/sb-admin-2.min.css" />
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css"
+          rel="stylesheet" />
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css"
+          rel="stylesheet" />
+    <!-- Date picker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
+          rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <style>
+        #nodata {
+            display: none;
+            text-align: center;
+            background: #f6f7fa;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+
+        .buttons-excel {
+            background: #257d07 !important;
+            color: #fff !important;
+            border: none !important;
+        }
+
+            .buttons-excel:hover {
+                background: #257d07b5 !important;
+            }
+    </style>
+</head>
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+               href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">Shwas</div>
+                <div class="sidebar-brand-text mx-3">India</div>
+            </a>
+            <hr class="sidebar-divider my-0" />
+            <li class="nav-item">
+                <a class="nav-link" href="planner.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Planner</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider" />
+            <!--<li class="nav-item">
+                <a class="nav-link" href="planner_approved.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Planner Approved</span>
+                </a>
+            </li>-->
+            <!-- Divider -->
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item ">
+                <a class="nav-link"
+                   href="#"
+                   data-toggle="collapse"
+                   data-target="#collapsePages"
+                   aria-expanded="false"
+                   aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Planner List</span>
+                </a>
+                <div id="collapsePages"
+                     class="collapse "
+                     aria-labelledby="headingPages"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="planner_approved.html">Planlist Approved</a>
+                        <a class="collapse-item" href="planner_approval_pending.html">Planlist Approval Pending</a>
+                        <a class="collapse-item" href="planner_cancelled.html">Planlist Cancelled</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider" />
+            <li class="nav-item active">
+                <a class="nav-link" href="leave.html">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>
+                        Leave
+                    </span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block" />
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <h3>Leave/Comp-Off</h3>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop"
+                            class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="searchDropdown"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control bg-light border-0 small"
+                                               placeholder="Search for..."
+                                               aria-label="Search"
+                                               aria-describedby="basic-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="userDropdown"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <span class="mr-2 d-lg-inline text-gray-600 small" id="username"></span>
+                                <img class="img-profile rounded-circle"
+                                     src="img/undraw_profile.svg" />
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item"
+                                   href="#"
+                                   data-toggle="modal"
+                                   data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="text-right mb-3">
+                        <button type="button" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#leavemodal">
+                            Apply for Leave
+                        </button>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <!-- Page Heading -->
+                            <div class="row">
+                                <div class="col-md-9"></div>
+                                <div class="col-md-3  date">
+                                    <label class="date_text"> Select month and year: </label>
+                                    <i id="date_icon" class="fa-solid fa-calendar-days"></i>
+                                    <input type="text"
+                                           id="datepicker_month"
+                                           class="form-control"
+                                           placeholder="Select Months" />
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table id="planlist" class="table table-hover table-bordered" style="width:98%">
+                                            <thead>
+                                                <tr>
+                                                    <!--<th scope="col">No</th>-->
+                                                    <th>Technician Name</th>
+                                                    <th class="RT-hide-mgr">Reporting Manager</th>
+                                                    <th class="RT-hide-zone">Zone</th>
+                                                    <th>Leave Type</th>
+                                                    <th>Date</th>
+                                                    <th>Reason</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <div id="nodata">No Data Availalbe. </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade"
+         id="logoutModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close"
+                            type="button"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">�</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary"
+                            type="button"
+                            data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a class="btn btn-primary logout_btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Leave Modal-->
+    <div class="modal fade" id="leavemodal" tabindex="-1" role="dialog" aria-labelledby="leavemodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="mod-leave-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Holiday / Leave / Comp-Off</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="">Leave Type</label>
+                                <select class="form-control getitem" id="leavetype" name="leave_type" required>
+                                    <option value="">Select Leave Type</option>
+                                    <option value="Technician on leave">FullDay Leave</option>
+                                    <option value="Technician on leave">HalfDay Leave</option>
+                                    <option value="Comp-off">Comp-off</option>
+                                    <option value="Holiday">Holiday</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Date</label>
+                                <input type="Date"
+                                       placeholder="Date" class="form-control getitem" id="f_date" name="leave_date" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="">Reason</label>
+                                <textarea class="form-control getitem" name="remark" id="reason" rows="1"></textarea>
+                                <input type="hidden" class="getitem" id="empcode" name="emp_code" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="mod-form">Apply</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!--Sweet Alert-->
+        <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.min.css" rel="stylesheet" />-->
+        <!-- Bootbox for alerts and confirmations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="js/common.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            var plannerlist_table, tablelist;
+            var today = new Date();
+            var planner_dt;
+            //function addremarkentry(){
+            //window.location.href = "camp_entries.html";
+
+            //}
+
+
+            $(document).ready(function () {
+
+                checklogin();
+                $("#username").text(getCookies().emp_name);
+                $("#empcode").val(getCookies().empcode);
+
+                var date2 = ''
+                $("#datepicker_month")
+                    .datepicker({
+                        format: "yyyy-mm",
+                        viewMode: "years",
+                        minViewMode: "months",
+                        autoclose: true,
+                    })
+                    .on("changeDate", function (e) {
+                        var date1 = e.format();
+                        date2 = formatDate1(date1);
+
+                        //$('#planlist').DataTable().column(2).search(date2).draw();
+                    });
+
+                $("#datepicker_month").change(function () {
+                    $('#planlist').DataTable().column(4).search(date2).draw();
+                });
+                function formatDate1(date) {
+                    var d = new Date(date),
+                        month = "" + (d.getMonth() + 1),
+                        day = "" + d.getDate(),
+                        year = d.getFullYear();
+
+                    if (month.length < 2) month = "0" + month;
+                    if (day.length < 2) day = "0" + day;
+                    var current_month = [year, month].join("-");
+                    /* alert([year, month].join("-"));*/
+
+                    return [year, month].join('-');
+                }
+
+
+                var obj = {
+                    "emp_code": getCookies().empcode,
+                    "status": "ALL"
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: "https://ams.24fd.com/UserManage/Get_Leave_list",
+                    data: JSON.stringify(obj),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (resultData) {
+                        myjson = resultData.dataObject;
+                        if (resultData.code == "200") {
+                            console.log(myjson);
+                            plannerlist(myjson);
+                            $("#nodata").hide();
+                        }
+                        else if (resultData.code == "409") {
+                            $("#nodata").show();
+                        }
+
+                        else {
+
+                            bootbox.alert({
+                                message: 'Something went wrong! Please try again.',
+                                callback: function () { }
+                            });
+
+                        }
+
+                    }
+                });
+
+
+                function formatDate(date) {
+                    var d = new Date(date),
+                        month = '' + (d.getMonth() + 1),
+                        day = '' + d.getDate(),
+                        year = d.getFullYear();
+
+                    if (month.length < 2)
+                        month = '0' + month;
+                    if (day.length < 2)
+                        day = '0' + day;
+
+                    return [month, day, year].join('/');
+                }
+
+
+                function plannerlist(data) {
+                    var desg = getCookies().desg;
+                    planner_dt = $('#planlist').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Leave',
+                                text: 'Export to excel'
+
+                            },
+
+                        ],
+                        "data": data, // this passes your data to DataTables
+                        "initComplete": function (settings, json) {
+                            $("#datepicker_month").datepicker("setDate", today);
+                        },
+                        "columns": [
+                            /*  { "data": "emp_name" },*/
+                            { "data": "emp_name" },
+                            { "data": "reportingTo" },
+                            { "data": "zone" },
+                            { "data": "leave_type" },
+                            { "data": "leave_date" },
+                            { "data": "remark" },
+                            {
+                                "data": "isActive",
+                                "mRender": function (data, type, row) {
+                                    if (desg != 'RT' & row.status == 'PENDING') {
+                                        return '<div class="Approvtbtn tblbtn" data-id="1" style="width:95px; font-size:11px;" >Approve <i class="ri-check-double-fill"></i></div>  <div class="Rejectbtn tblbtn redbtn" data-id="2"  style="width:95px; font-size:11px; margin-left:5px;" >Reject <i class="ri-close-line"></i></div> '
+                                    }
+                                    else {
+                                        return '<p class="leaveText"> <i class="ri-checkbox-multiple-fill approveIcon"></i>' + row.status + '</p>'
+                                    }
+
+                                }
+                            },
+                        ],
+                        "columnDefs": [
+                            { "width": "10%", "targets": 0 },
+                            { "width": "10%", "targets": 1 },
+                            { "width": "10%", "targets": 2 },
+                            { "width": "10%", "targets": 3 },
+                            { "width": "10%", "targets": 4 },
+
+                            { "width": "10%", "targets": 5 },
+                            { "width": "20%", "targets": 6 }
+                        ]
+
+                    });
+
+                    // Hide a column
+                    var desg = getCookies().desg;
+                    if (desg == 'RT') {
+                        planner_dt.column('.RT-hide-mgr').visible(false);
+                        planner_dt.column('.RT-hide-zone').visible(false);
+                    }
+
+                    $("#planlist tbody").on("click", ".Addbtn", function () {
+                        var obj1 = planner_dt.row($(this).parents('tr')).data();
+                        window.location.href = "camp_entries.html?=pid" + obj1.pid;
+                    });
+                    //planner_dt.on('order.dt search.dt', function () {
+                    //    let i = 1;
+
+                    //    planner_dt.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+                    //        this.data(i++);
+                    //    });
+                    //}).draw();
+
+                    $('#planlist tbody').on("click", '.Approvtbtn', function (event) {
+                        var obj1 = planner_dt.row($(this).parents('tr')).data();
+                        //alert(obj1.lid);
+
+                        var obj = {
+                            "emp_code": getCookies().empcode,
+                            "status": "APPROVE",
+                            "lid": obj1.lid,
+                            "remark": "Leave APPROVE"
+                        }
+                        var obj2 = {
+                            "emp_code": getCookies().empcode,
+                            "status": "ALL"
+                        }
+
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You want to approve the leave",
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Aprrove!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "https://ams.24fd.com/UserManage/update_leave_status",
+                                    data: JSON.stringify(obj),
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (resultData) {
+                                        myjson = resultData.dataObject;
+                                        if (resultData.code == "200") {
+                                            Swal.fire(
+                                                'Aprroved!',
+                                                ' ',
+                                                'success'
+                                            )
+                                            //$.ajax({
+                                            //    type: 'POST',
+                                            //    url: 'https://ams.24fd.com/UserManage/Get_Leave_list',
+                                            //    dataType: "json",
+                                            //    contentType: 'application/json;charset=utf-8 ',
+                                            //    data: JSON.stringify(obj2),
+                                            //    async: false,
+                                            //    processData: false,
+                                            //    success: function (data) {
+                                            //        var item = data.dataObject;
+                                            //        planner_dt.clear().draw();
+                                            //        planner_dt.rows.add(item);
+                                            //        planner_dt.columns.adjust().draw();
+                                            //        console.log(item);
+                                            //    }
+                                            //});
+                                            location.reload();
+                                        }
+
+                                        else {
+
+                                            bootbox.alert({
+                                                message: 'Something went wrong! Please try again.',
+                                                callback: function () { }
+                                            });
+
+                                        }
+
+                                    }
+                                });
+                            }
+                        })
+
+
+
+
+
+
+                    });
+
+                    $('#planlist tbody').on("click", '.Rejectbtn', function (event) {
+                        var obj1 = planner_dt.row($(this).parents('tr')).data();
+                        var obj2 = {
+                            "emp_code": getCookies().empcode,
+                            "status": "ALL"
+                        }
+
+                        Swal.fire({
+                            title: "Are you sure?",
+                            text: "You want to reject the plan",
+
+                            inputPlaceholder: "Remark",
+                            showCancelButton: true,
+                            closeOnConfirm: false,
+                            animation: "slide-from-top",
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Confirm!',
+                            html: `<input type="text" id="remark" class="swal2-input" placeholder="Remark">`,
+                            focusConfirm: false,
+                            preConfirm: () => {
+                                const remark = Swal.getPopup().querySelector('#remark').value
+                                if (!remark) {
+                                    Swal.showValidationMessage(`Please enter Remark`)
+                                }
+                                return { remark: remark }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                var obj = {
+                                    "emp_code": getCookies().empcode,
+                                    "status": "REJECT",
+                                    "lid": obj1.lid,
+                                    "remark": Swal.getPopup().querySelector('#remark').value
+                                }
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "https://ams.24fd.com/UserManage/update_leave_status",
+                                    data: JSON.stringify(obj),
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (resultData) {
+                                        myjson = resultData.dataObject;
+                                        if (resultData.code == "200") {
+                                            Swal.fire(
+                                                'Rejected!',
+                                                ' ',
+                                                'success'
+                                            )
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'https://ams.24fd.com/UserManage/Get_Leave_list',
+                                                dataType: "json",
+                                                contentType: 'application/json;charset=utf-8 ',
+                                                data: JSON.stringify(obj2),
+                                                async: false,
+                                                processData: false,
+                                                success: function (data) {
+                                                    var item = data.dataObject;
+                                                    planner_dt.clear().draw();
+                                                    planner_dt.rows.add(item);
+                                                    planner_dt.columns.adjust().draw();
+                                                    console.log(item);
+                                                }
+                                            });
+                                        } else {
+
+                                            bootbox.alert({
+                                                message: 'Something went wrong! Please try again.',
+                                                callback: function () { }
+                                            });
+
+                                        }
+
+                                    }
+                                });
+                            }
+
+
+                        })
+
+                    });
+
+                }
+
+
+                $("#mod-leave-form").on("submit", function (event) {
+                    event.preventDefault();
+
+                    var fields = {};
+                    //alert($("#emp_code").val());
+                    $("#mod-leave-form").find(".getitem").each(function () {
+                        fields[this.name] = $(this).val();
+
+                    });
+                    var obj2 = {
+                        "emp_code": getCookies().empcode,
+                        "status": "ALL"
+                    };
+                    var obj = fields;
+                    console.log(obj)
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "https://ams.24fd.com/UserManage/apply_leave",
+                        data: JSON.stringify(obj),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (resultData) {
+
+                            if (resultData.code == "200") {
+                                window.location = "leave.html";
+                                //$.ajax({
+                                //    type: 'POST',
+                                //    url: 'https://ams.24fd.com/UserManage/Get_Leave_list',
+                                //    dataType: "json",
+                                //    contentType: 'application/json;charset=utf-8 ',
+                                //    data: JSON.stringify(obj2),
+                                //    async: false,
+                                //    processData: false,
+                                //    success: function (data) {
+                                //        var item = data.dataObject;
+                                //        //alert(item)
+                                //        //planner_dt.DataTable().clear().destroy();
+                                //        planner_dt.clear().destroy();
+                                //        planner_dt.rows.add(item);
+                                //        planner_dt.columns.adjust().draw();
+                                //        console.log(item);
+                                //        $("#nodata").hide();
+                                //    }
+                                //});
+
+
+                                $("#leavemodal").modal("hide");
+                                bootbox.alert({
+                                    message: 'Your leave has been added for : ' + $("#f_date").val(),
+                                    callback: function () {
+                                        $("#mod-leave-form").trigger("reset");
+
+                                    }
+                                });
+
+
+                            } else if (resultData.code == "409") {
+
+                                bootbox.alert({
+                                    message: 'You have already applied for the leave on same date.',
+                                    callback: function () { }
+                                });
+                            }
+
+                            else {
+
+                                bootbox.alert({
+                                    message: 'Something went wrong! Please try again.',
+                                    callback: function () { }
+                                });
+
+                            }
+
+                        }
+                    });
+
+                });
+
+
+            });
+
+        </script>
+</body>
+</html>
